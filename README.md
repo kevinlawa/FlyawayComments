@@ -23,7 +23,7 @@
 
 * Create "FlyawayComments.Functions" Project
 
-  - Add an Azure Function V3 Project and named it "FlyawayComments.Functions"
+  - Add an Azure Function V3 Project to the solution and name it "FlyawayComments.Functions"
 
   - Reference FlyawayComments.Data Project
 
