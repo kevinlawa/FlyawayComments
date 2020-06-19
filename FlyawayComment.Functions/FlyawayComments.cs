@@ -9,15 +9,21 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using FlyawayComments.Data.Repositories;
 using System.Linq;
+using AutoMapper.QueryableExtensions;
+using FlyawayComment.Functions.Models;
+using AutoMapper;
+using System.Collections.Generic;
 
 namespace FlyawayComment.Functions
 {
     public class FlyawayComments
     {
         private readonly IFlyawayRepository repo;
-        public FlyawayComments(IFlyawayRepository repo)
+        private readonly IMapper mapper;
+        public FlyawayComments(IFlyawayRepository repo, IMapper mapper)
         {
             this.repo = repo;
+            this.mapper = mapper;
         }
 
         [FunctionName("FlyawayComments")]
@@ -33,18 +39,21 @@ namespace FlyawayComment.Functions
             dynamic data = JsonConvert.DeserializeObject(requestBody);
             date = date ?? data?.date;
 
-            var dateAdded = default(DateTime);
+            DateTime dateAdded;
 
             var isDate = DateTime.TryParse(date, out dateAdded);
             if (!isDate)
                 dateAdded = DateTime.Now;
 
 
-            //string responseMessage = string.IsNullOrEmpty(name)
-            //    ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-            //    : $"Hello, {name}. This HTTP triggered function executed successfully.";
+            //this will query all fields and no mapping - so return all fields
+            //var comments = repo.GetFlyawayComments(dateAdded).ToList();
 
-            var comments = repo.GetFlyawayComments(dateAdded).ToList();
+            //this will get all fields from db first then map to whatever in LaxgroundTransportationDTO - return smaller no of fields in DTO
+            //var comments = mapper.Map<List<LaxgroundTransportationDTO>>(repo.GetFlyawayComments(dateAdded));
+
+            //most efficient: this will only query db for the fields specified in LaxgroundTransportationDTO - return smaller no of fields in DTO
+            var comments = repo.GetFlyawayComments(dateAdded).ProjectTo<LaxgroundTransportationDTO>(mapper.ConfigurationProvider).ToList();
 
             return new OkObjectResult(comments);
         }

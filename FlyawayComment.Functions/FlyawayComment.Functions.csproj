@@ -5,6 +5,7 @@
     <UserSecretsId>dec4ac4f-3307-4d6f-9f6d-ad2cd96f45e5</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.3" />
