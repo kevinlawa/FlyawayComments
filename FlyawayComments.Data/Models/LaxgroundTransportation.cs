@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ClassLibrary1.Models
+namespace FlyawayComments.Data.Models
 {
     public partial class LaxgroundTransportation
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using AutoMapper;
-using ClassLibrary1.Models;
+using FlyawayComments.Data.Models;
 using FlyawayComment.Functions.Models;
 using FlyawayComments.Data.Repositories;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;

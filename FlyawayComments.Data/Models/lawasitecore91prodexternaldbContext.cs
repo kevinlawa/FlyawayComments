@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace ClassLibrary1.Models
+namespace FlyawayComments.Data.Models
 {
     public partial class lawasitecore91prodexternaldbContext : DbContext
     {

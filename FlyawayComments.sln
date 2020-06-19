@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyawayComments.Data", "FlyawayComments.Data\FlyawayComments.Data.csproj", "{C66BFC88-EB33-4D90-A261-F6BCE89BA783}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyawayComments.Data", "FlyawayComments.Data\FlyawayComments.Data.csproj", "{C66BFC88-EB33-4D90-A261-F6BCE89BA783}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyawayComment.Functions", "FlyawayComment.Functions\FlyawayComment.Functions.csproj", "{D275C037-1174-4066-BD46-6D24FF2E2ADD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyawayComments.Functions", "FlyawayComments.Functions\FlyawayComments.Functions.csproj", "{D275C037-1174-4066-BD46-6D24FF2E2ADD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
