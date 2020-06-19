@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyawayComments.Data", "ClassLibrary1\FlyawayComments.Data.csproj", "{C66BFC88-EB33-4D90-A261-F6BCE89BA783}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlyawayComment.Functions", "FlyawayComment.Functions\FlyawayComment.Functions.csproj", "{D275C037-1174-4066-BD46-6D24FF2E2ADD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C66BFC88-EB33-4D90-A261-F6BCE89BA783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C66BFC88-EB33-4D90-A261-F6BCE89BA783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C66BFC88-EB33-4D90-A261-F6BCE89BA783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C66BFC88-EB33-4D90-A261-F6BCE89BA783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D275C037-1174-4066-BD46-6D24FF2E2ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D275C037-1174-4066-BD46-6D24FF2E2ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D275C037-1174-4066-BD46-6D24FF2E2ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D275C037-1174-4066-BD46-6D24FF2E2ADD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {243EF686-6A0E-4F7D-9DC1-17521CDF4FB9}
+	EndGlobalSection
+EndGlobal
