@@ -8,7 +8,7 @@ namespace FlyawayComments.Data.Repositories
 {
     public interface IFlyawayRepository
     {
-        public IQueryable<LaxgroundTransportation> GetFlyawayComments(DateTime data);
+        public IQueryable<LaxgroundTransportation> GetFlyawayComments(DateTime date);
 
     }
 }
