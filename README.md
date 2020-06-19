@@ -40,7 +40,7 @@
 
           Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection
 
-  - > Create Automapper Mapping by inheriting the Profile Class
+    - Create Automapper Mapping by inheriting the Profile Class
 
           public class AutoMapping : Profile
           {
@@ -51,7 +51,7 @@
               }
           }
 
-  - > Register Automapper as a service
+    - Register Automapper as a service
 
           public class Startup : FunctionsStartup
           {
@@ -62,61 +62,60 @@
               }
           }
 
-  - > Inject automapper via constructor
+    - Inject automapper via constructor
 
-          private readonly IMapper mapper;
-          public FlyawayComments(IMapper mapper)
-          {
-              this.mapper = mapper;
-          }
-
-
-    - Create Startup class to register services to do dependency injection
-
-            using System;
-            using AutoMapper;
-            using FlyawayComments.Data.Models;
-            using FlyawayComment.Functions.Models;
-            using FlyawayComments.Data.Repositories;
-            using Microsoft.Azure.Functions.Extensions.DependencyInjection;
-            using Microsoft.EntityFrameworkCore;
-            using Microsoft.Extensions.DependencyInjection;
-
-            [assembly: FunctionsStartup(typeof(FlyawayComment.Functions.Startup))]
-
-            namespace FlyawayComment.Functions
-            {
-                public class Startup : FunctionsStartup
-                {
-
-                    public override void Configure(IFunctionsHostBuilder builder)
-                    {
-                        //register dbcontext
-                        string connectionString = Environment.GetEnvironmentVariable("FlyawayConnectionString");
-                        builder.Services.AddDbContext<lawasitecore91prodexternaldbContext>(options =>
-                        {
-                            SqlServerDbContextOptionsExtensions.UseSqlServer(options, connectionString);
-                        });
-
-                        //register automapper
-                        builder.Services.AddAutoMapper(c => c.AddProfile<AutoMapping>(), typeof(Startup));
-
-                        //register our repo
-                        builder.Services.AddScoped<IFlyawayRepository, FlyawayRepository>();
-
-                    }
-
-                }
-            }
-
-    - Using constructor dependency injection
-
-            private readonly IFlyawayRepository repo;
             private readonly IMapper mapper;
-            public FlyawayComments(IFlyawayRepository repo, IMapper mapper)
+            public FlyawayComments(IMapper mapper)
             {
-                this.repo = repo;
                 this.mapper = mapper;
             }
 
-    - Remove all static keywords in the Azure Function Class(es) because constructor dependency injection requires concreate class to contruct with the use of the constructor.
+- Create Startup class to register services to do dependency injection
+
+        using System;
+        using AutoMapper;
+        using FlyawayComments.Data.Models;
+        using FlyawayComment.Functions.Models;
+        using FlyawayComments.Data.Repositories;
+        using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+        using Microsoft.EntityFrameworkCore;
+        using Microsoft.Extensions.DependencyInjection;
+
+        [assembly: FunctionsStartup(typeof(FlyawayComment.Functions.Startup))]
+
+        namespace FlyawayComment.Functions
+        {
+            public class Startup : FunctionsStartup
+            {
+
+                public override void Configure(IFunctionsHostBuilder builder)
+                {
+                    //register dbcontext
+                    string connectionString = Environment.GetEnvironmentVariable("FlyawayConnectionString");
+                    builder.Services.AddDbContext<lawasitecore91prodexternaldbContext>(options =>
+                    {
+                        SqlServerDbContextOptionsExtensions.UseSqlServer(options, connectionString);
+                    });
+
+                    //register automapper
+                    builder.Services.AddAutoMapper(c => c.AddProfile<AutoMapping>(), typeof(Startup));
+
+                    //register our repo
+                    builder.Services.AddScoped<IFlyawayRepository, FlyawayRepository>();
+
+                }
+
+            }
+        }
+
+- Using constructor dependency injection
+
+        private readonly IFlyawayRepository repo;
+        private readonly IMapper mapper;
+        public FlyawayComments(IFlyawayRepository repo, IMapper mapper)
+        {
+            this.repo = repo;
+            this.mapper = mapper;
+        }
+
+- Remove all static keywords in the Azure Function Class(es) because constructor dependency injection requires concreate class to contruct with the use of the constructor.
