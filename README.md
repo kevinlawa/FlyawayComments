@@ -118,4 +118,4 @@
             this.mapper = mapper;
         }
 
-- Remove all static keywords in the Azure Function Class(es) because constructor dependency injection requires concreate class to contruct with the use of the constructor.
+- Remove all static keywords in the Azure Function class(es) because constructor dependency injection can not have static class.
