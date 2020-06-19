@@ -9,7 +9,7 @@
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.3" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\FlyawayComments.Data.csproj" />
+    <ProjectReference Include="..\FlyawayComments.Data\FlyawayComments.Data.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
