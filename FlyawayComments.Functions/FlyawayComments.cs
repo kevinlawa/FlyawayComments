@@ -10,11 +10,11 @@ using Newtonsoft.Json;
 using FlyawayComments.Data.Repositories;
 using System.Linq;
 using AutoMapper.QueryableExtensions;
-using FlyawayComment.Functions.Models;
+using FlyawayComments.Functions.Models;
 using AutoMapper;
 using System.Collections.Generic;
 
-namespace FlyawayComment.Functions
+namespace FlyawayComments.Functions
 {
     public class FlyawayComments
     {

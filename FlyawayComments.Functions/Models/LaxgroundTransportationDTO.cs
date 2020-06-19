@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FlyawayComment.Functions.Models
+namespace FlyawayComments.Functions.Models
 {
     public class LaxgroundTransportationDTO
     {

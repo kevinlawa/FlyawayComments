@@ -1,8 +1,9 @@
 # Projects Setup
 
-- Create FlyawayComments.Data - _Need to create this project first because scaffolding dbcontext using reverse engineering technique will throw an error._
+- Create "FlyawayComments.Data" Project - _Need to create this project first because scaffolding dbcontext using reverse engineering technique will throw an error._
 
-  - Add as class library project
+  - Add an EF Core class library project and name it "FlyawayComments.Data"
+
   - [Reference EF Core SQL Server Package](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer)
 
         Install-Package Microsoft.EntityFrameworkCore.SqlServer
@@ -20,7 +21,9 @@
     - Create LaxRepository Implementing ILaxRepository
     - Use Dependency Injection to inject ILaxRepository in Controller of FlyawayComments.Functions project
 
-* Create FlyawayComments.Functions
+* Create "FlyawayComments.Functions" Project
+
+  - Add an Azure Function V3 Project and named it "FlyawayComments.Functions"
 
   - Reference FlyawayComments.Data Project
 
@@ -42,25 +45,25 @@
 
     - Create Automapper Mapping by inheriting the Profile Class
 
-          public class AutoMapping : Profile
-          {
-              public AutoMapping()
-              {
-                  //Only want some fields and not all the fields from the table
-                  CreateMap<LaxgroundTransportation, LaxgroundTransportationDTO>();
-              }
-          }
+            public class AutoMapping : Profile
+            {
+                public AutoMapping()
+                {
+                    //Only want some fields and not all the fields from the table
+                    CreateMap<LaxgroundTransportation, LaxgroundTransportationDTO>();
+                }
+            }
 
     - Register Automapper as a service
 
-          public class Startup : FunctionsStartup
-          {
-              public override void Configure(IFunctionsHostBuilder builder)
-              {
-                  //register automapper
-                  builder.Services.AddAutoMapper(c => c.AddProfile<AutoMapping>(), typeof(Startup));
-              }
-          }
+            public class Startup : FunctionsStartup
+            {
+                public override void Configure(IFunctionsHostBuilder builder)
+                {
+                    //register automapper
+                    builder.Services.AddAutoMapper(c => c.AddProfile<AutoMapping>(), typeof(Startup));
+                }
+            }
 
     - Inject automapper via constructor
 

@@ -1,15 +1,15 @@
 ﻿using System;
 using AutoMapper;
 using FlyawayComments.Data.Models;
-using FlyawayComment.Functions.Models;
+using FlyawayComments.Functions.Models;
 using FlyawayComments.Data.Repositories;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-[assembly: FunctionsStartup(typeof(FlyawayComment.Functions.Startup))]
+[assembly: FunctionsStartup(typeof(FlyawayComments.Functions.Startup))]
 
-namespace FlyawayComment.Functions
+namespace FlyawayComments.Functions
 {
     public class Startup : FunctionsStartup
     {
