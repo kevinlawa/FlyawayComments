@@ -1,9 +1,9 @@
-# Project Setup
+# Projects Setup
 
 - Create FlyawayComments.Data - _Need to create this project first because scaffolding dbcontext using reverse engineering technique will throw an error._
 
   - Add as class library project
-  - [Reference EF Core SQL Server Package]("https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer")
+  - [Reference EF Core SQL Server Package](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer)
 
         Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
@@ -24,19 +24,19 @@
 
   - Reference FlyawayComments.Data Project
 
-  - [Reference EF Core SQL Server Package]("https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer")
+  - [Reference EF Core SQL Server Package](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer)
 
           Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
-  - [Reference Microsoft.Azure.Functions.Extensions]("https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/")
+  - [Reference Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
           Install-Package Microsoft.Azure.Functions.Extensions
 
-  - [Reference Microsoft.NET.Sdk.Functions]("https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/")
+  - [Reference Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/)
 
           Install-Package Microsoft.NET.Sdk.Functions
 
-  - [Reference AutoMapper]("https://www.nuget.org/packages/AutoMapper.Extensions.Microsoft.DependencyInjection") - _Optional but recommended_
+  - [Reference AutoMapper](https://www.nuget.org/packages/AutoMapper.Extensions.Microsoft.DependencyInjection) - _Optional but recommended_
 
           Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection
 
@@ -119,3 +119,13 @@
         }
 
 - Remove all static keywords in the Azure Function class(es) because constructor dependency injection can not have static class.
+
+- References
+
+  - [EF Core with Azure Functions](https://markheath.net/post/ef-core-di-azure-functions)
+
+  - [Use dependency injection in .NET Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-dotnet-dependency-injection)
+
+  - [EF Core](https://www.entityframeworktutorial.net/efcore/create-model-for-existing-database-in-ef-core.aspx)
+
+  - [AutoMapper](https://www.codementor.io/@zedotech/how-to-using-automapper-on-asp-net-core-3-0-via-dependencyinjection-zq497lzsq)
