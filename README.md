@@ -70,6 +70,14 @@
                 this.mapper = mapper;
             }
 
+    - Using automapper
+
+            //this will get all fields from db first then map to whatever in LaxgroundTransportationDTO - return smaller no of fields in DTO
+            //var comments = mapper.Map<List<LaxgroundTransportationDTO>>(repo.GetFlyawayComments(dateAdded));
+
+            //most efficient: this will only query db for the fields specified in LaxgroundTransportationDTO - return smaller no of fields in DTO
+            var comments = repo.GetFlyawayComments(dateAdded).ProjectTo<LaxgroundTransportationDTO>(mapper.ConfigurationProvider).ToList();
+
 - Create Startup class to register services to do dependency injection
 
         using System;
