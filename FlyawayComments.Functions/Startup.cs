@@ -14,7 +14,6 @@ namespace FlyawayComments.Functions
 {
     public class Startup : FunctionsStartup
     {
-
         public override void Configure(IFunctionsHostBuilder builder)
         {
             //register dbcontext

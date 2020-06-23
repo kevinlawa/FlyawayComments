@@ -45,15 +45,34 @@ namespace FlyawayComments.Functions
             if (!isDate)
                 dateAdded = DateTime.Now;
 
+            //v1 - this will query all fields and no mapping - so return all fields
+            //con: query all fields from db first (performance issue)
+            var comments = repo.GetFlyawayComments(dateAdded).ToList();
 
-            //this will query all fields and no mapping - so return all fields
-            //var comments = repo.GetFlyawayComments(dateAdded).ToList();
+            //v2 - this will query only the selected fields but we are creating anonymous type
+            //con: dont know the type so have to find out from the code 
+            //var comments = repo.GetFlyawayComments(dateAdded).Select(c => new { 
+            //    c.TransportId,
+            //    c.ServiceType,
+            //    c.ServiceSubType
+            //}).ToList();
 
-            //this will get all fields from db first then map to whatever in LaxgroundTransportationDTO - return smaller no of fields in DTO
+            //v3 - this will query only the selected fields with strongly typed
+            //con: have to manually type the mapping - this could be a problem if we have a lot of places that need this data return
+            //can copy and paste can lead to bugs
+            //var comments = repo.GetFlyawayComments(dateAdded).Select(c => new LaxgroundTransportationDTO() {
+            //    TransportId = c.TransportId,
+            //    ServiceType =  c.ServiceType,
+            //    ServiceSubType = c.ServiceSubType
+            //}).ToList();
+
+            //v4 - this will get all fields from db first then map to whatever in LaxgroundTransportationDTO - return smaller no of fields in DTO
+            //con: query all fields from db first (performance issue)
             //var comments = mapper.Map<List<LaxgroundTransportationDTO>>(repo.GetFlyawayComments(dateAdded));
 
-            //most efficient: this will only query db for the fields specified in LaxgroundTransportationDTO - return smaller no of fields in DTO
-            var comments = repo.GetFlyawayComments(dateAdded).ProjectTo<LaxgroundTransportationDTO>(mapper.ConfigurationProvider).ToList();
+            //v5 most efficient: this will only query db for the fields specified in LaxgroundTransportationDTO - return smaller no of fields in DTO
+            //con: have to learn automapper - reference and configure it.
+            //var comments = repo.GetFlyawayComments(dateAdded).ProjectTo<LaxgroundTransportationDTO>(mapper.ConfigurationProvider).ToList();
 
             return new OkObjectResult(comments);
         }
