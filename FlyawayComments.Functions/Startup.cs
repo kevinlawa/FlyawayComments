@@ -6,6 +6,7 @@ using FlyawayComments.Data.Repositories;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 [assembly: FunctionsStartup(typeof(FlyawayComments.Functions.Startup))]
 
@@ -20,11 +21,12 @@ namespace FlyawayComments.Functions
             string connectionString = Environment.GetEnvironmentVariable("FlyawayConnectionString");
             builder.Services.AddDbContext<lawasitecore91prodexternaldbContext>(options =>
             {
+                options.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()));
                 SqlServerDbContextOptionsExtensions.UseSqlServer(options, connectionString);
             });
 
             //register automapper
-            builder.Services.AddAutoMapper(c => c.AddProfile<AutoMapping>(), typeof(Startup));
+            builder.Services.AddAutoMapper(typeof(Startup));
 
             //register our repo
             builder.Services.AddScoped<IFlyawayRepository, FlyawayRepository>();
